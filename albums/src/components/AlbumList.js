@@ -11,14 +11,14 @@ class AlbumList extends Component {
       .then(response => this.setState({albums: response.data}));
   }
 
+  renderAlbums() {
+    return this.state.albums.map(albums => <Text>{albums.title}</Text>);
+  }
+
   render() {
     console.log(this.state);
 
-    return (
-      <View>
-        <Text>Album List !!!!</Text>
-      </View>
-    );
+    return <View>{this.renderAlbums()}</View>;
   }
 }
 
