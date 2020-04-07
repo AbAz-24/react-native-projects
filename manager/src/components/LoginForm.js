@@ -64,6 +64,7 @@ class LoginForm extends Component {
 const styles = {
   viewStyle: {
     backgroundColor: 'white',
+    paddingTop: 10,
   },
   errorTextStyle: {
     fontSize: 20,
