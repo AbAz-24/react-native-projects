@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, {Component} from 'react';
 import Communications from 'react-native-communications';
 import {connect} from 'react-redux';
-import {employeeUpdate, employeeSave} from '../actions';
+import {employeeUpdate, employeeSave, employeeDelete} from '../actions';
 import EmployeeForm from './EmployeeForm';
 import {Card, CardSection, Button, Confirm} from './common';
 
@@ -30,10 +30,14 @@ class EmployeeEdit extends Component {
     );
   }
 
-  onAccept() {}
+  onAccept() {
+    const {uid} = this.props.employee;
+
+    this.props.employeeDelete({uid});
+  }
 
   onDecline() {
-    this.state({showModal: false});
+    this.setState({showModal: false});
   }
 
   render() {
@@ -74,5 +78,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {employeeUpdate, employeeSave},
+  {employeeUpdate, employeeSave, employeeDelete},
 )(EmployeeEdit);
